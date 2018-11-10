@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>~TITLE~ status page</title>
+  <meta name="description" content="Node values and system info from ~TITLE~">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+    }
+    header {
+      padding: 10px 20px;
+      background: #13a6db;
+    }
+    section {
+      padding: 20px;
+      width: 80%;
+    }
+    h1 {
+      color: #fff;
+      font-size: 200%;
+    }
+    h2 {
+      margin: 0;
+      padding: 0 0 20px 0;
+      color: #13a6db;
+      font-size: 150%;
+    }
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #ddd;
+    }
+    th, td {
+      text-align: left;
+      padding: 5px;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    pre {
+      padding: 10px;
+      background: #323233;
+      color: #ffc300;
+      overflow: auto;
+      line-height: 16px;
+      height: 160px;
+    }
+  </style>
+</head>
+ 
+<body>
+  <header>
+    <h1>~TITLE~ status page</h1>
+  </header>
+  <main>
+    <section id="mqtt">
+      <h2>MQTT nodes</h2>
+      <table>
+        <thead>
+          <tr><th>Node</th><th>Value</th><th>Set</th></tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </section>
+    <section id="system">
+      <h2>System info</h2>
+      <table>
+      </table>
+      <pre></pre>
+    </section>
+    <section id="update">
+      <h2>Update</h2>
+      <form action="/update" method="post" enctype="multipart/form-data" id="updateForm">
+        <input type="file" name="firmware" id="firmware">
+        <input type="submit" value="Update" id="submitButton">
+      </form>
+      <p id="updateMessage"></p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
