@@ -75,7 +75,8 @@ class TreeLightClass : public Print, public AsyncMqttClient {
   void setHostname(const char* hostname);
   void setupWiFi(const char* ssid, const char* pass);
   void setupServer(uint16_t port = 80);
-  void setupMqtt(const IPAddress broker, const uint16_t port = 1883);
+  //void setupMqtt(const IPAddress broker, const uint16_t port = 1883);
+  void setupMqtt(const IPAddress broker, const uint16_t port = 1883, const char* username = NULL, const char* password = NULL);
   void begin();
   void loop();
 

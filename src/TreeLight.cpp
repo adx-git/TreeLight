@@ -136,11 +136,16 @@ void TreeLightClass::setupServer(uint16_t port) {
   });
 }
 
-void TreeLightClass::setupMqtt(const IPAddress broker, const uint16_t port) {
+
+
+void TreeLightClass::setupMqtt(const IPAddress broker, const uint16_t port, const char* username, const char* password) {
   AsyncMqttClient::onConnect(std::bind(&TreeLightClass::_onMqttConnected, this));
   AsyncMqttClient::onDisconnect(std::bind(&TreeLightClass::_onMqttDisconnected, this, std::placeholders::_1));
   AsyncMqttClient::onMessage(std::bind(&TreeLightClass::_onMqttMessage, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3,
                                                                              std::placeholders::_4, std::placeholders::_5, std::placeholders::_6));
+  if ((username != NULL) && (password != NULL)) {
+    AsyncMqttClient::setCredentials(username, password);
+  }
   AsyncMqttClient::setServer(broker, port);
   AsyncMqttClient::setKeepAlive(5);
   AsyncMqttClient::setCleanSession(true);
